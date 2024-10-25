@@ -62,7 +62,9 @@ import {fetchPlaylistsByUser} from "../controllers/fetchPlaylistsController";
  *                         description: Logged in user name
  *                         example: Test User
  *                 error: 
- *                   type: string          
+ *                   type: string
+ *                   description: The error message.
+ *                   example: ""   
  */
 
 router.route("/").get(fetchPlaylistsByUser);

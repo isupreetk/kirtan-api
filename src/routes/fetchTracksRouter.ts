@@ -62,7 +62,9 @@ import {fetchTracksByPlaylistID} from "../controllers/fetchTracksController";
  *                         description: Username of person who deleted track from playlist
  *                         example: Test User
  *                 error: 
- *                   type: string          
+ *                   type: string  
+ *                   description: The error message.
+ *                   example: ""           
  */
 
 router.route("/").get(fetchTracksByPlaylistID);

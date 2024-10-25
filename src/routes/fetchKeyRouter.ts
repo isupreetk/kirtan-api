@@ -38,7 +38,9 @@ import {fetchKey} from "../controllers/fetchKeyController";
  *                         description: The values.
  *                         example: 1
  *                 error: 
- *                   type: string          
+ *                   type: string   
+ *                   description: The error message.
+ *                   example: ""       
 */
 
 router.route("/").get(fetchKey);
