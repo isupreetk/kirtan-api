@@ -1,30 +1,12 @@
-import express, {Express, Request, Response} from "express";
-import cors from "cors";
-import dotenv from "dotenv";
+import express from "express";
+import keyFetchingRoute from "./src/routes/fetchKeyRouter";
+import updateFileURLRoute from "./src/routes/updateFileURLRouter";
+import fetchPlaylistsRoute from "./src/routes/fetchPlaylistsRouter";
+import fetchTracksRoute from "./src/routes/fetchTracksRouter";
 
-const app: Express = express();
+export const routes = express.Router();
 
-dotenv.config();
-const port = process.env.PORT;
-
-import keyFetchingRoute from "./routes/fetchKeyRouter";
-import updateFileURLRoute from "./routes/updateFileURLRouter";
-import fetchPlaylistsRoute from "./routes/fetchPlaylistsRouter";
-import fetchTracksRoute from "./routes/fetchTracksRouter";
-
-app.use(cors());
-app.use(express.json());
-
-app.use("/settings", keyFetchingRoute);
-app.use("/updateFileURL", updateFileURLRoute);
-app.use("/playlists", fetchPlaylistsRoute);
-app.use("/tracks", fetchTracksRoute);
-
-app.get("/", (req: Request, res: Response) => {
-  console.log("Get on server");
-  return res.send("Welcome to Kirtan Server");
-});
-
-app.listen(port, () => {
-  console.log(`Connected on ${port}`);
-});
+routes.use("/settings", keyFetchingRoute);
+routes.use("/updateFileURL", updateFileURLRoute);
+routes.use("/playlists", fetchPlaylistsRoute);
+routes.use("/tracks", fetchTracksRoute);

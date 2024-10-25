@@ -1,5 +1,5 @@
 import express, {Request, Response} from "express";
-import knex from "../knex";
+import knex from "../../knex";
 
 export const updateFileDetails = (req: Request, res: Response) => {
   const { fileURL } = req.body;
@@ -34,14 +34,14 @@ export const updateFileDetails = (req: Request, res: Response) => {
         .then((data) => {
           return knex("settings")
             .then((data) => {
-              return res.json({data: data, error: null});
+              return res.send(data);
             })
             .catch((error) => {
-              return res.send({data: null, error: error});
+              return res.send(error);
             });
         })
         .catch((error) => {
-          return res.send({data: null, error: error});
+          return res.send(error);
         });
     })
     .catch((error) => {

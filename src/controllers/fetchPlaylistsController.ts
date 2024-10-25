@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import knex from "../knex";
+import knex from "../../knex";
 
 export const fetchPlaylistsByUser = (req: Request, res: Response) => {
   let { login_id } = req.query;
@@ -26,10 +26,10 @@ export const fetchPlaylistsByUser = (req: Request, res: Response) => {
       )
       .where("playlist.login_id", login_id)
       .then((data) => {
-        res.json({data: data, error: null});
+        res.send({"data": data, "error": ""});
       })
       .catch((error) => {
-        res.send({data: null, error: error});
+        res.send({"data": "", "error": error});
       });
   }
 };
