@@ -8,20 +8,20 @@ export const fetchTracksByPlaylistID = (req: Request, res: Response) => {
     return knex("playlist_tracks")
         .where("playlist_id", "in", playlist_id)
         .then((data) => {
-            res.json(data);
+            res.send({"data": data, "error": ""});
         })
         .catch((error) => {
-            res.send(error);
+            res.send({"data": "", "error": error});
         });
 }
 else {
     return knex("playlist_tracks")
         .where("playlist_id", "in", [playlist_id])
         .then((data) => {
-            res.json(data);
+            res.send({"data": data, "error": ""});
         })
         .catch((error) => {
-            res.send(error);
+            res.send({"data": "", "error": error});
         });
 }
 };

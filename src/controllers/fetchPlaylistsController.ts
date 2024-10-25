@@ -12,9 +12,9 @@ export const fetchPlaylistsByUser = (req: Request, res: Response) => {
     .join("playlist_details", "playlist_details.playlist_id", "playlist.playlist_id")
     .where("playlist.login_id", login_id)
     .then((data) => {
-      res.json(data);
+      res.send({"data": data, "error": ""});
     })
     .catch((error) => {
-      res.send(error);
+      res.send({"data": "", "error": error});
     });
 };

@@ -34,7 +34,7 @@ export const updateFileDetails = (req: Request, res: Response) => {
         .then((data) => {
           return knex("settings")
             .then((data) => {
-              return res.json(data);
+              return res.send(data);
             })
             .catch((error) => {
               return res.send(error);
@@ -48,5 +48,3 @@ export const updateFileDetails = (req: Request, res: Response) => {
       return res.send(error);
     });
 };
-
-// export default updateFileDetails;
